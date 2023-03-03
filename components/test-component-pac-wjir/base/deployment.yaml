@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: test-component-pac-wjir
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-component-pac-wjir
+    app.kubernetes.io/part-of: build-suite-test-application-rbhg
+  name: test-component-pac-wjir
+  namespace: build-e2e-izsr-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: test-component-pac-wjir
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: test-component-pac-wjir
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images
+        imagePullPolicy: Always
+        name: container-image
+        resources:
+          limits:
+            cpu: "1"
+            memory: 512Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
